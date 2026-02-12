@@ -109,8 +109,14 @@ int C_Attack(C_Character *p)
 
 void C_Hurted_EN(C_Character *p, int hurt)
 {
-    (p->HP) -= abs(hurt - (p->defence));
-    printf("%s takes %d point of damage!\n", (p->name_EN), abs(hurt - (p->defence)));
+    int sum = 0;
+    sum = hurt - (p->defence);
+    if(sum < 0)
+    {
+        sum = 0;
+    }
+    (p->HP) -= sum;
+    printf("%s takes %d point of damage!\n", (p->name_EN), sum);
 
     if((p->HP) <= 0)
     {
@@ -121,8 +127,14 @@ void C_Hurted_EN(C_Character *p, int hurt)
 }
 void C_Hurted_CN(C_Character *p, int hurt)
 {
-    (p->HP) -= abs(hurt - (p->defence));
-    printf("%s 受到了 %d 点伤害！\n", (p->name_CN), abs(hurt - (p->defence)));
+    int sum = 0;
+    sum = hurt - (p->defence);
+    if(sum < 0)
+    {
+        sum = 0;
+    }
+    (p->HP) -= sum;
+    printf("%s 受到了 %d 点伤害！\n", (p->name_CN), sum);
 
     if((p->HP) <= 0)
     {

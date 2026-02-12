@@ -54,7 +54,7 @@ int main(void)
             }
             else
             {
-                if (stepcnt <= 20)
+                if (stepcnt <= 15)
                 {
                     //H_Moving(H_getHeroPos(), key);
                     C_Position *h = H_getHeroPos();
