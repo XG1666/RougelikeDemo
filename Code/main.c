@@ -60,7 +60,7 @@ int main(void)
             {
                 if (stepcnt <= 15)
                 {
-                    //H_Moving(H_getHeroPos(), key);
+                    //Hero moves, entering rooms 角色移动，进入房间
                     C_Position *h = H_getHeroPos();
                     switch (key)
                     {
@@ -133,7 +133,12 @@ int main(void)
                     }
 
                     stepcnt ++;
+                    //
 
+                    //Enter room 进入房间
+                    //Select room type with random number 随机房间类型
+                    //
+                    //In the room 房间事件发生
                     switch (C_randomNum(3))
                     {
                     case 1:
@@ -152,7 +157,11 @@ int main(void)
                     default:
                         break;
                     }
+                    //
+
                 }
+                
+                //After 15 steps, enter boss' room 15步进入boss房
                 else
                 {
                     M_showPreperation();
@@ -160,6 +169,7 @@ int main(void)
                     M_showEnd(H_getHeroInfo());
                     break;
                 }
+                //
             }
                 
 

@@ -21,15 +21,13 @@ typedef struct
     C_GenderType gender;
     int HP;
     int max_HP;
+    int hurt;
     int strength;
     int wisdom;
     int defence;
 
     C_EquipmentType equipment[3];
 } C_Character;
-
-#define isEmpty h.equipment[0]==EM||h.equipment[1]==EM||h.equipment[2]==EM
-#define isFlyingCannon h.equipment[0]==FlyingCannon||h.equipment[1]==FlyingCannon||h.equipment[2]==FlyingCannon
 
 typedef enum
 {
@@ -47,11 +45,11 @@ int C_randomNum(int max);
 void C_initEnemy(void);
 C_Character *C_getBossInfo(void);
 C_Character *C_getEnemyInfo(void);
-int C_Attack(C_Character *p);
-void C_Hurted(C_Character *p, int hurt);
+int C_Attack(C_Character *p1, C_Character *p2);
+void C_Hurted(C_Character *p);
 void C_addHP(C_Character *p, int add);
 void C_addDefence(C_Character *p, int add);
 void C_addStrength(C_Character *p, int add);
-int C_enemyAction(C_Character *e);
+int C_enemyAction(C_Character *e, C_Character *h);
 
 #endif

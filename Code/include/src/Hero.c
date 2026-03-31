@@ -24,7 +24,7 @@ void H_setHero_EN(void)
     hero.max_HP = 100;
     hero.strength = 5;
     hero.wisdom = 10;
-    hero.defence = 8;
+    hero.defence = 3;
 
     hero_p.x = 0;
     hero_p.y = 0;
@@ -40,7 +40,7 @@ void H_setHero_CN(void)
     hero.max_HP = 100;
     hero.strength = 5;
     hero.wisdom = 10;
-    hero.defence = 8;
+    hero.defence = 3;
     for(int i = 0; i < 3; i ++)
     {
         hero.equipment[i] = EM;
@@ -180,16 +180,16 @@ void H_Moving(C_Position *p, char key)
     }
 }*/
 
-int H_Attack(void)
+int H_Attack(C_Character *e)
 {
     int attack;
-    attack = C_Attack(ptr_hero);
+    attack = C_Attack(ptr_hero, e);
     return attack;
 }
 
-void H_Hurted(int hurt)
+void H_Hurted()
 {
-    C_Hurted(ptr_hero, hurt);
+    C_Hurted(ptr_hero);
     if(hero.HP == 0)
     {
         hero.HP = 0;

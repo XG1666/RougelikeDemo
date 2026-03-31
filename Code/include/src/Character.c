@@ -148,23 +148,23 @@ void C_getEquipmentDscp(C_EquipmentType eq)
     }
 }
 
-int C_Attack(C_Character *p)
+int C_Attack(C_Character *p1, C_Character *p2)
 {
     int attack;
-    attack = C_randomNum(20) + (p->strength);
+    attack = C_randomNum(20) + (p1->strength);
+
+    p2->hurt = attack;
+    if(p2->hurt < 0)
+    {
+        p2->hurt = 0;
+    }
     return attack;
 }
 
-void C_Hurted_EN(C_Character *p, int hurt)
+void C_Hurted_EN(C_Character *p)
 {
-    int sum = 0;
-    sum = hurt - (p->defence);
-    if(sum < 0)
-    {
-        sum = 0;
-    }
-    (p->HP) -= sum;
-    printf("%s takes %d point of damage!\n", (p->name_EN), sum);
+    (p->HP) -= p->hurt;
+    printf("%s takes %d point of damage!\n", (p->name_EN), p->hurt);
 
     if((p->HP) <= 0)
     {
@@ -173,16 +173,10 @@ void C_Hurted_EN(C_Character *p, int hurt)
     }
     scanf("%c", &cle);
 }
-void C_Hurted_CN(C_Character *p, int hurt)
+void C_Hurted_CN(C_Character *p)
 {
-    int sum = 0;
-    sum = hurt - (p->defence);
-    if(sum < 0)
-    {
-        sum = 0;
-    }
-    (p->HP) -= sum;
-    printf("%s 受到了 %d 点伤害！\n", (p->name_CN), sum);
+    (p->HP) -= p->hurt;
+    printf("%s 受到了 %d 点伤害！\n", (p->name_CN), p->hurt);
 
     if((p->HP) <= 0)
     {
@@ -191,15 +185,15 @@ void C_Hurted_CN(C_Character *p, int hurt)
     }
     scanf("%c", &cle);
 }
-void C_Hurted(C_Character *p, int hurt)
+void C_Hurted(C_Character *p)
 {
     if(l == EN)
     {
-        C_Hurted_EN(p, hurt);
+        C_Hurted_EN(p);
     }
     else if (l == CN)
     {
-        C_Hurted_CN(p, hurt);
+        C_Hurted_CN(p);
     }
 }
 
@@ -297,11 +291,11 @@ void C_addStrength(C_Character *p, int add)
     }
 }
 
-int C_enemyAction(C_Character *e)
+int C_enemyAction(C_Character *e, C_Character *h)
 {
     int e_attack = 0;
 
-    e_attack = C_Attack(e);
+    e_attack = C_Attack(e, h);
 
     return e_attack;
 }

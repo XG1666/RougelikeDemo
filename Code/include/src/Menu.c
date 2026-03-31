@@ -734,6 +734,7 @@ void M_showBattleMenu_EN(C_Character *h, C_Character *e)
 {
     while((h->HP) && (e->HP))
     {
+        //Show the menu
         system("cls");
         printf("********\n");
         printf(" Battle\n");
@@ -747,22 +748,35 @@ void M_showBattleMenu_EN(C_Character *h, C_Character *e)
         printf("1.Attack  2.Defence  3.Leave\n");
         printf("*****************************\n");
         scanf("%c", &key);
+        //
 
+        //Confirm action
         if(key == '1')
         {
-            C_Hurted(e, H_Attack());
+            //Before battle stage
+            //
+
+            //Calculate damages
+            H_Attack(e);//Generate enemy's damage
+            C_Hurted(e);//hurt
+            //
+
+            //After battle stage
             if(e->HP != 0)
             {
-                H_Hurted(C_enemyAction(e));
+                C_enemyAction(e, h);
+                H_Hurted();
             }
             else
             {
                 break;
             }
+            //
         }
         else if(key == '2')
         {
-            H_Hurted(h->defence);
+            h->hurt = 0;
+            H_Hurted();
             scanf("%c", &cle);
         }
         else if(key == '3')
@@ -777,7 +791,8 @@ void M_showBattleMenu_EN(C_Character *h, C_Character *e)
             else
             {
                 printf("Failed to run away!\n");
-                H_Hurted(C_enemyAction(e));
+                C_enemyAction(e, h);
+                H_Hurted();
                 scanf("%c", &cle);
                 //scanf("%c", &cle);
                 continue;
@@ -795,6 +810,7 @@ void M_showBattleMenu_CN(C_Character *h, C_Character *e)
 {
     while((h->HP) && (e->HP))
     {
+        //战斗界面
         system("cls");
         printf("********\n");
         printf("  战斗\n");
@@ -808,22 +824,35 @@ void M_showBattleMenu_CN(C_Character *h, C_Character *e)
         printf("1.攻击   2.防御   3.逃离\n");
         printf("*****************************\n");
         scanf("%c", &key);
+        //
 
+        //确认操作
         if(key == '1')
         {
-            C_Hurted(e, H_Attack());
+            //准备阶段
+            //
+
+            //战阶
+            H_Attack(e);//Generate enemy's damage
+            C_Hurted(e);//hurt
+            //
+
+            //战后结算
             if(e->HP != 0)
             {
-                H_Hurted(C_enemyAction(e));
+                C_enemyAction(e, h);
+                H_Hurted();
             }
             else
             {
                 break;
             }
+            //
         }
         else if(key == '2')
         {
-            H_Hurted(h->defence);
+            h->hurt = 0;
+            H_Hurted();
             scanf("%c", &cle);
         }
         else if(key == '3')
@@ -832,15 +861,14 @@ void M_showBattleMenu_CN(C_Character *h, C_Character *e)
             {
                 printf("成功逃脱！\n");
                 scanf("%c", &cle);
-                //scanf("%c", &cle);
                 break;
             }
             else
             {
                 printf("逃脱失败！\n");
-                H_Hurted(C_enemyAction(e));
+                C_enemyAction(e, h);
+                H_Hurted();
                 scanf("%c", &cle);
-                //scanf("%c", &cle);
                 continue;
             }
         }
@@ -868,6 +896,7 @@ void M_showBossBattleMenu_EN(C_Character *h, C_Character *e)
 {
     while((h->HP) && (e->HP))
     {
+        //Show the menu
         system("cls");
         printf("********\n");
         printf(" Battle\n");
@@ -881,22 +910,35 @@ void M_showBossBattleMenu_EN(C_Character *h, C_Character *e)
         printf("1.Attack  2.Defence\n");
         printf("*****************************\n");
         scanf("%c", &key);
+        //
 
+        //Confirm action
         if(key == '1')
         {
-            C_Hurted(e, H_Attack());
+            //Before battle stage
+            //
+
+            //Calculate damages
+            H_Attack(e);//Generate enemy's damage
+            C_Hurted(e);//hurt
+            //
+
+            //After battle stage
             if(e->HP != 0)
             {
-                H_Hurted(C_enemyAction(e));
+                C_enemyAction(e, h);
+                H_Hurted();
             }
             else
             {
                 break;
             }
+            //
         }
         else if(key == '2')
         {
-            H_Hurted(h->defence);
+            h->hurt = 0;
+            H_Hurted();
             scanf("%c", &cle);
         }
     }
@@ -910,6 +952,7 @@ void M_showBossBattleMenu_CN(C_Character *h, C_Character *e)
 {
     while((h->HP) && (e->HP))
     {
+        //战斗界面
         system("cls");
         printf("********\n");
         printf("  战斗\n");
@@ -923,22 +966,35 @@ void M_showBossBattleMenu_CN(C_Character *h, C_Character *e)
         printf("1.攻击   2.防御\n");
         printf("*****************************\n");
         scanf("%c", &key);
+        //
 
+        //确认操作
         if(key == '1')
         {
-            C_Hurted(e, H_Attack());
+            //准备阶段
+            //
+
+            //战阶
+            H_Attack(e);//Generate enemy's damage
+            C_Hurted(e);//hurt
+            //
+
+            //战后结算
             if(e->HP != 0)
             {
-                H_Hurted(C_enemyAction(e));
+                C_enemyAction(e, h);
+                H_Hurted();
             }
             else
             {
                 break;
             }
+            //
         }
         else if(key == '2')
         {
-            H_Hurted(h->defence);
+            h->hurt = 0;
+            H_Hurted();
             scanf("%c", &cle);
         }
     }
