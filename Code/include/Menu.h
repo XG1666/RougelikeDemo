@@ -8,10 +8,21 @@ typedef enum
     CN = 0, EN = 1
 } M_Launguage;
 
+typedef enum
+{
+    battle0 = 0,
+    battle1,
+    battle2,
+    add_HP,
+    add_strength,
+    add_defence
+} M_RoomType;
+
 void M_selectL(void);
 void M_showStartMenu(void);
 void M_showLoadMenu(void);
 void M_showWelcomeHero(C_Character *p);
+void M_showHeroInfo(C_Character *h);
 void M_showWay(C_Position *p);
 void M_showAddMenu(void);
 void M_showAwardMenu(void);

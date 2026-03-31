@@ -41,6 +41,10 @@ void H_setHero_CN(void)
     hero.strength = 5;
     hero.wisdom = 10;
     hero.defence = 8;
+    for(int i = 0; i < 3; i ++)
+    {
+        hero.equipment[i] = EM;
+    }
 
     hero_p.x = 0;
     hero_p.y = 0;

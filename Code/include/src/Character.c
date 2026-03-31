@@ -100,6 +100,54 @@ C_Character *C_getEnemyInfo(void)
     return p;
 }
 
+void C_getEquipmentDscp_EN(C_EquipmentType eq)
+{
+    switch(eq)
+    {
+        case EM:
+        {
+            printf("Empty\n");
+            break;
+        }
+        case FlyingCannon:
+        {
+            printf("FlyingCannon.\nRegardless the defence, when calculate damage each turn, create 2 points of damages to the enemy.\n");
+            break;
+        }
+        default:
+            break;
+    }
+}
+void C_getEquipmentDscp_CN(C_EquipmentType eq)
+{
+    switch(eq)
+    {
+        case EM:
+        {
+            printf("空\n");
+            break;
+        }
+        case FlyingCannon:
+        {
+            printf("浮游炮。\n无视防御, 每回合我方伤害结算时对敌人造成2点伤害。\n");
+            break;
+        }
+        default:
+            break;
+    }
+}
+void C_getEquipmentDscp(C_EquipmentType eq)
+{
+    if(l == EN)
+    {
+        C_getEquipmentDscp_EN(eq);
+    }
+    else if (l == CN)
+    {
+        C_getEquipmentDscp_CN(eq);
+    }
+}
+
 int C_Attack(C_Character *p)
 {
     int attack;

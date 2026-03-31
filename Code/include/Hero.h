@@ -11,6 +11,7 @@ int H_isBottom(C_Position *p);
 int H_isLeftEdge(C_Position *p);
 int H_isRightEdge(C_Position *p);
 //void H_Moving(C_Position *p, char key);
+void C_getEquipmentDscp(C_EquipmentType eq);
 int H_Attack(void);
 void H_Hurted(int hurt);
 void H_addHP(int add);

@@ -3,9 +3,9 @@
 #include<time.h>
 #include<windows.h>
 
-#include"include/Menu.h"
-#include"include/Character.h"
-#include"include/Hero.h"
+#include"include/Menu.h"//About context and menu 关于文本及界面
+#include"include/Character.h"//About basic character 关于基本角色（角色模板及敌人）
+#include"include/Hero.h"//About hero 关于主角
 
 char key;
 extern char cle;
@@ -14,12 +14,14 @@ M_Launguage l;
 
 int main(void)
 {
-    SetConsoleOutputCP(65001);
-    srand(time(0));
+    SetConsoleOutputCP(65001);//Simplified Chinese setting 设置简体中文
+    srand(time(0));//Random seed setting 设置随机数种子
+
     M_selectL();
     M_showStartMenu();
     scanf("%c", &key);
-    scanf("%c", &key);
+    scanf("%c", &key);//Welcome 入场
+
     if(key == 's')
     {
         /*存档功能待开发
@@ -39,7 +41,7 @@ int main(void)
         }
         */
 
-        H_setHero();
+        H_setHero();//Initialize the hero 初始化角色
         M_showWelcomeHero(H_getHeroInfo());
         
         while(H_getHeroInfo() -> HP)
@@ -47,6 +49,8 @@ int main(void)
             C_initEnemy();
             M_showWay(H_getHeroPos());
             scanf("%c", &key);
+
+
             if(key == 'q')
             {
                 printf("Game Quits!");
@@ -60,6 +64,11 @@ int main(void)
                     C_Position *h = H_getHeroPos();
                     switch (key)
                     {
+                        case 'i':
+                        {
+                            M_showHeroInfo(H_getHeroInfo());
+                            continue;
+                        }
                         case 'w':
                         {
                             h->direction = w;

@@ -22,18 +22,16 @@ void M_selectL(void)
 
     switch (L)
     {
-    case 1:
-    {
-        l = EN;
-        break;
-    }
-    case 2:
-    {
-        l = CN;
-        break;
-    }
-    default:
-        break;
+        case 1:
+        {
+            l = EN;
+            break;
+        }
+        case 2:
+        {
+            l = CN;
+            break;
+        }
     }
 }
 
@@ -109,8 +107,9 @@ void M_showWelcomeHero_CN(C_Character *p)
     printf("    杀掉恶灵及其拥趸\n");
     printf("**************************\n");
     
+    //scanf("%c", &cle);
     scanf("%c", &cle);
-    scanf("%c", &cle);
+    while(getchar() != '\n'){}
 
     system("cls");
     printf("**************************\n");
@@ -128,6 +127,66 @@ void M_showWelcomeHero(C_Character *p)
     {
         M_showWelcomeHero_CN(p);
     }
+}
+
+void M_showEquipmentInfo_EN(C_Character *h)
+{
+    for(int i = 0; i < 3; i ++)
+    {
+        printf("Equipment %d: ", i+1);
+        C_getEquipmentDscp(h -> equipment[i]);
+        printf("\n");
+    }
+}
+void M_showEquipmentInfo_CN(C_Character *h)
+{
+    for(int i = 0; i < 3; i ++)
+    {
+        printf("装备 %d: ", i+1);
+        C_getEquipmentDscp(h -> equipment[i]);
+        printf("\n");
+    }
+}
+
+void M_showHeroInfo_EN(C_Character *h)
+{
+    system("cls");
+
+    printf("**************************\n");
+    printf("name:%s\n", h->name_EN);
+    printf("HP:%d\n", h->HP);
+    printf("Strength:%d\n", h->strength);
+    printf("Defence:%d\n", h->defence);
+    printf("\n");
+    M_showEquipmentInfo_EN(h);
+    printf("**************************\n");
+}
+void M_showHeroInfo_CN(C_Character *h)
+{
+    system("cls");
+
+    printf("**************************\n");
+    printf("姓名：%s\n", h->name_CN);
+    printf("血量：%d\n", h->HP);
+    printf("力量：%d\n", h->strength);
+    printf("防御：%d\n", h->defence);
+    printf("\n");
+    M_showEquipmentInfo_CN(h);
+    printf("**************************\n");
+}
+void M_showHeroInfo(C_Character *h)
+{
+    if(l == EN)
+    {
+        M_showHeroInfo_EN(h);
+    }
+    else if (l == CN)
+    {
+        M_showHeroInfo_CN(h);
+    }
+
+    scanf("%c", &cle);
+    while(getchar() != '\n'){}
 }
 
 void M_showEntry(void)//二周目入口

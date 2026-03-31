@@ -8,6 +8,12 @@ typedef enum
     NA = 2 
 } C_GenderType;
 
+typedef enum
+{
+    EM = 0,
+    FlyingCannon
+} C_EquipmentType;
+
 typedef struct 
 {
     char name_EN[20];
@@ -18,7 +24,12 @@ typedef struct
     int strength;
     int wisdom;
     int defence;
+
+    C_EquipmentType equipment[3];
 } C_Character;
+
+#define isEmpty h.equipment[0]==EM||h.equipment[1]==EM||h.equipment[2]==EM
+#define isFlyingCannon h.equipment[0]==FlyingCannon||h.equipment[1]==FlyingCannon||h.equipment[2]==FlyingCannon
 
 typedef enum
 {
