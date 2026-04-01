@@ -25,6 +25,10 @@ void H_setHero_EN(void)
     hero.strength = 5;
     hero.wisdom = 10;
     hero.defence = 3;
+    for(int i = 0; i < 3; i ++)
+    {
+        hero.equipment[i] = EM;
+    }
 
     hero_p.x = 0;
     hero_p.y = 0;
@@ -45,6 +49,7 @@ void H_setHero_CN(void)
     {
         hero.equipment[i] = EM;
     }
+    hero.equipment[0] = FlyingCannon;
 
     hero_p.x = 0;
     hero_p.y = 0;

@@ -148,6 +148,61 @@ void C_getEquipmentDscp(C_EquipmentType eq)
     }
 }
 
+void C_EquipmentBB(C_Character *h, C_Character *e)
+{
+    for(int i = 0; i < 3; i ++)
+    {
+        switch(h->equipment[i])
+        {
+            case EM:
+            {
+                break;
+            }
+            default:
+                break;
+        }
+    }
+}
+void C_EquipmentCD(C_Character *h, C_Character *e)
+{
+    if(e->HP)
+    {
+        for(int i = 0; i < 3; i ++)
+        {
+            switch(h->equipment[i])
+            {
+                case EM:
+                {
+                    break;
+                }
+                case FlyingCannon:
+                {
+                    e->hurt = 2;
+                    C_Hurted(e);
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+    }
+}
+void C_EquipmentAB(C_Character *h, C_Character *e)
+{
+    for(int i = 0; i < 3; i ++)
+    {
+        switch(h->equipment[i])
+        {
+            case EM:
+            {
+                break;
+            }
+            default:
+                break;
+        }
+    }
+}
+
 int C_Attack(C_Character *p1, C_Character *p2)
 {
     int attack;
@@ -171,7 +226,9 @@ void C_Hurted_EN(C_Character *p)
         p->HP = 0;
         printf("%s is killed!\n", (p->name_EN));
     }
-    scanf("%c", &cle);
+    p->hurt = 0;
+    
+    while(getchar() != '\n'){}
 }
 void C_Hurted_CN(C_Character *p)
 {
@@ -183,7 +240,7 @@ void C_Hurted_CN(C_Character *p)
         p->HP = 0;
         printf("%s 被杀死了！\n", (p->name_CN));
     }
-    scanf("%c", &cle);
+    while(getchar() != '\n'){}
 }
 void C_Hurted(C_Character *p)
 {

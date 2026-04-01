@@ -1,0 +1,59 @@
+{
+  "background.editor": {
+    "useFront": true,
+    "style": {
+      "background-position": "100% 100%",
+      "background-size": "cover",
+      "opacity": 0.2
+    },
+    "styles": [{}, {}, {}],
+    // `images` supports online and local images, as well as folders.
+    "images": [
+      // online images, only `https` is allowed.
+      // local images
+      "C:/Users/X/Desktop/Working/vscodebackground/vseditorbackground.png"
+      // local folders
+      // data URL
+    ],
+    "interval": 0,
+    "random": false
+  },
+  "background.sidebar": {
+    "useFront": true,
+    "style": {
+      "background-position": "100% 100%",
+      "background-size": "cover",
+      "opacity": 0.4
+    },
+    "styles": [{}, {}, {}],
+    // `images` supports online and local images, as well as folders.
+    "images": [
+      // online images, only `https` is allowed.
+      // local images
+      "C:/Users/X/Desktop/Working/vscodebackground/side.jpg"
+      // local folders
+      // data URL
+    ],
+    "interval": 0,
+    "random": false
+  },
+  "background.panel": {
+    "useFront": true,
+    "style": {
+      "background-position": "90% 100%",
+      "background-size": "cover",
+      "opacity": 0.5
+    },
+    "styles": [{}, {}, {}],
+    // `images` supports online and local images, as well as folders.
+    "images": [
+      // online images, only `https` is allowed.
+      // local images
+      "C:/Users/X/Desktop/Working/vscodebackground/panel.jpg"
+      // local folders
+      // data URL
+    ],
+    "interval": 0,
+    "random": false
+  }
+}

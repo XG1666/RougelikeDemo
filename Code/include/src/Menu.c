@@ -360,7 +360,7 @@ void M_showWay_CN(C_Position *p)
         {
             printf("***********    ***********\n");
             printf("*         向上走          *\n");
-            printf("*          (W)           *\n");
+            printf("*          (W)            *\n");
             printf("*                   向右走\n");
             printf("*                    (D)  \n");
             printf("*                        *\n");
@@ -754,17 +754,21 @@ void M_showBattleMenu_EN(C_Character *h, C_Character *e)
         if(key == '1')
         {
             //Before battle stage
+            C_EquipmentBB(h, e);
             //
 
             //Calculate damages
             H_Attack(e);//Generate enemy's damage
             C_Hurted(e);//hurt
+
+            C_EquipmentCD(h, e);
             //
 
             //After battle stage
             if(e->HP != 0)
             {
                 C_enemyAction(e, h);
+                C_EquipmentAB(h, e);
                 H_Hurted();
             }
             else
@@ -830,17 +834,21 @@ void M_showBattleMenu_CN(C_Character *h, C_Character *e)
         if(key == '1')
         {
             //准备阶段
+            C_EquipmentBB(h, e);
             //
 
             //战阶
             H_Attack(e);//Generate enemy's damage
             C_Hurted(e);//hurt
+
+            C_EquipmentCD(h, e);
             //
 
             //战后结算
             if(e->HP != 0)
             {
                 C_enemyAction(e, h);
+                C_EquipmentAB(h, e);
                 H_Hurted();
             }
             else
@@ -916,17 +924,21 @@ void M_showBossBattleMenu_EN(C_Character *h, C_Character *e)
         if(key == '1')
         {
             //Before battle stage
+            C_EquipmentBB(h, e);
             //
 
             //Calculate damages
             H_Attack(e);//Generate enemy's damage
             C_Hurted(e);//hurt
+
+            C_EquipmentCD(h, e);
             //
 
             //After battle stage
             if(e->HP != 0)
             {
                 C_enemyAction(e, h);
+                C_EquipmentAB(h, e);
                 H_Hurted();
             }
             else
@@ -972,17 +984,21 @@ void M_showBossBattleMenu_CN(C_Character *h, C_Character *e)
         if(key == '1')
         {
             //准备阶段
+            C_EquipmentBB(h, e);
             //
 
             //战阶
             H_Attack(e);//Generate enemy's damage
             C_Hurted(e);//hurt
+
+            C_EquipmentCD(h, e);
             //
 
             //战后结算
             if(e->HP != 0)
             {
                 C_enemyAction(e, h);
+                C_EquipmentAB(h, e);
                 H_Hurted();
             }
             else

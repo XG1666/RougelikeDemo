@@ -51,5 +51,9 @@ void C_addHP(C_Character *p, int add);
 void C_addDefence(C_Character *p, int add);
 void C_addStrength(C_Character *p, int add);
 int C_enemyAction(C_Character *e, C_Character *h);
+void C_getEquipmentDscp(C_EquipmentType eq);
+void C_EquipmentBB(C_Character *h, C_Character *e);
+void C_EquipmentCD(C_Character *h, C_Character *e);
+void C_EquipmentAB(C_Character *h, C_Character *e);
 
 #endif
