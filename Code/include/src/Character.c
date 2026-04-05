@@ -4,6 +4,7 @@
 #include<stdlib.h>
 
 #include"../Character.h"
+#include"../Hero.h"
 #include"../Menu.h"
 
 C_Character enemy[3];
@@ -15,6 +16,7 @@ C_Character *ptr_enemy2 = &enemy[2];
 
 char cle;
 extern M_Launguage l;
+extern int *VTRe;
 
 int C_randomNum(int max)
 {
@@ -114,6 +116,11 @@ void C_getEquipmentDscp_EN(C_EquipmentType eq)
             printf("FlyingCannon.\nRegardless the defence, when calculate damage each turn, create 2 points of damages to the enemy.\n");
             break;
         }
+        case VampireTooth:
+        {
+            printf("VampireTooth.\nGet certain points of health, which equals to half of the damage you cause.\n");
+            break;
+        }
         default:
             break;
     }
@@ -130,6 +137,11 @@ void C_getEquipmentDscp_CN(C_EquipmentType eq)
         case FlyingCannon:
         {
             printf("浮游炮。\n无视防御, 每回合我方伤害结算时对敌人造成2点伤害。\n");
+            break;
+        }
+        case VampireTooth:
+        {
+            printf("吸血鬼之牙。\n回复你对敌人造成的伤害的一半的生命值\n");
             break;
         }
         default:
@@ -181,6 +193,11 @@ void C_EquipmentCD(C_Character *h, C_Character *e)
                     C_Hurted(e);
                     break;
                 }
+                case VampireTooth:
+                {
+                    H_addHP(*VTRe);
+                    break;
+                }
                 default:
                     break;
             }
@@ -226,7 +243,6 @@ void C_Hurted_EN(C_Character *p)
         p->HP = 0;
         printf("%s is killed!\n", (p->name_EN));
     }
-    p->hurt = 0;
     
     while(getchar() != '\n'){}
 }
@@ -240,6 +256,7 @@ void C_Hurted_CN(C_Character *p)
         p->HP = 0;
         printf("%s 被杀死了！\n", (p->name_CN));
     }
+    
     while(getchar() != '\n'){}
 }
 void C_Hurted(C_Character *p)

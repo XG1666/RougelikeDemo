@@ -139,7 +139,7 @@ int main(void)
                     //Select room type with random number 随机房间类型
                     //
                     //In the room 房间事件发生
-                    switch (C_randomNum(3))
+                    switch (C_randomNum(4))
                     {
                     case 1:
                     case 3:
@@ -154,6 +154,8 @@ int main(void)
                         }
                     case 2:
                         M_showAddMenu();
+                    case 4:
+                        M_showEquipmentMenu(C_randomNum(4), H_getHeroInfo());
                     default:
                         break;
                     }

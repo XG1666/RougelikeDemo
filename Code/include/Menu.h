@@ -24,6 +24,7 @@ void M_showLoadMenu(void);
 void M_showWelcomeHero(C_Character *p);
 void M_showHeroInfo(C_Character *h);
 void M_showWay(C_Position *p);
+void M_showEquipmentMenu(int eq, C_Character *h);
 void M_showAddMenu(void);
 void M_showAwardMenu(void);
 void M_showBattleMenu(C_Character *h, C_Character *e);

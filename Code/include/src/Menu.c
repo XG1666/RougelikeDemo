@@ -642,6 +642,78 @@ void M_showAddMenu(void)
     }
 }
 
+void M_showEquipmentMenu_EN(int eq, C_Character *h)
+{
+    eq = (C_EquipmentType)eq;
+
+    system("cls");
+    printf("*********\n");
+    printf("Equipment\n");
+    printf("*****************************\n");
+    printf("Pick up the equipment or just leave (type \'4\') :\n");
+    C_getEquipmentDscp(eq);
+    printf("*****************************\n");
+    M_showEquipmentInfo_EN(h);
+    printf("*****************************\n");
+
+    scanf("%c", &key);
+    switch(key)
+    {
+        case '1':
+            h->equipment[0] = eq;
+            break;
+        case '2':
+            h->equipment[1] = eq;
+            break;
+        case '3':
+            h->equipment[2] = eq;
+            break;
+        case '4':
+            break;
+    }
+}
+void M_showEquipmentMenu_CN(int eq, C_Character *h)
+{
+    eq = (C_EquipmentType)eq;
+
+    system("cls");
+    printf("*********\n");
+    printf("  装备库\n");
+    printf("*****************************\n");
+    printf("拾起此装备, 或者直接离开 (输入\'4\') :\n");
+    C_getEquipmentDscp(eq);
+    printf("*****************************\n");
+    M_showEquipmentInfo_CN(h);
+    printf("*****************************\n");
+
+    scanf("%c", &key);
+    switch(key)
+    {
+        case '1':
+            h->equipment[0] = eq;
+            break;
+        case '2':
+            h->equipment[1] = eq;
+            break;
+        case '3':
+            h->equipment[2] = eq;
+            break;
+        case '4':
+            break;
+    }
+}
+void M_showEquipmentMenu(int eq, C_Character *h)
+{
+    if(l == EN)
+    {
+        M_showEquipmentMenu_EN(eq, h);
+    }
+    else if (l == CN)
+    {
+        M_showEquipmentMenu_CN(eq, h);
+    }
+}
+
 void M_showAwardMenu_EN(void)
 {
     system("cls");
