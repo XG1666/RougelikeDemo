@@ -154,8 +154,10 @@ int main(void)
                         }
                     case 2:
                         M_showAddMenu();
+                        break;
                     case 4:
-                        M_showEquipmentMenu(C_randomNum(4), H_getHeroInfo());
+                        M_showEquipmentMenu(C_randomNum(3), H_getHeroInfo());
+                        break;
                     default:
                         break;
                     }

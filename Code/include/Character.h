@@ -12,7 +12,8 @@ typedef enum
 {
     EM = 0,
     FlyingCannon,
-    VampireTooth
+    VampireTooth,
+    HeartProtection
     //共个
 } C_EquipmentType;//C_getEquipmentDscp, C_Equipment**,  M_showEquipmentMenu(in main)
 

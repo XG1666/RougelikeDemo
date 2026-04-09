@@ -712,6 +712,8 @@ void M_showEquipmentMenu(int eq, C_Character *h)
     {
         M_showEquipmentMenu_CN(eq, h);
     }
+
+    while(getchar() != '\n'){}
 }
 
 void M_showAwardMenu_EN(void)
@@ -874,6 +876,11 @@ void M_showBattleMenu_EN(C_Character *h, C_Character *e)
                 continue;
             }
         }
+        else if(key == 'i')
+        {
+            M_showHeroInfo(H_getHeroInfo());
+            continue;
+        }
         
     }
     if(h->HP <= 0)
@@ -952,6 +959,11 @@ void M_showBattleMenu_CN(C_Character *h, C_Character *e)
                 continue;
             }
         }
+        else if(key == 'i')
+        {
+            M_showHeroInfo(H_getHeroInfo());
+            continue;
+        }
         
     }
     if(h->HP <= 0)
@@ -1025,6 +1037,11 @@ void M_showBossBattleMenu_EN(C_Character *h, C_Character *e)
             H_Hurted();
             scanf("%c", &cle);
         }
+        else if(key == 'i')
+        {
+            M_showHeroInfo(H_getHeroInfo());
+            continue;
+        }
     }
     if(h->HP <= 0)
     {
@@ -1084,6 +1101,11 @@ void M_showBossBattleMenu_CN(C_Character *h, C_Character *e)
             h->hurt = 0;
             H_Hurted();
             scanf("%c", &cle);
+        }
+        else if(key == 'i')
+        {
+            M_showHeroInfo(H_getHeroInfo());
+            continue;
         }
     }
     if(h->HP <= 0)

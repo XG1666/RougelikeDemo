@@ -8,7 +8,8 @@
 #define mazeEdge 5
 extern char key;
 extern M_Launguage l;
-int *VTRe;
+int VTRe;
+int *ptr_VTRe = & VTRe;
 
 C_Character hero;
 C_Character *ptr_hero = &hero;
@@ -50,7 +51,6 @@ void H_setHero_CN(void)
     {
         hero.equipment[i] = EM;
     }
-    hero.equipment[0] = VampireTooth;
 
     hero_p.x = 0;
     hero_p.y = 0;
@@ -190,7 +190,7 @@ int H_Attack(C_Character *e)
 {
     int attack;
     attack = C_Attack(ptr_hero, e);
-    *VTRe = (attack / 2);
+    *ptr_VTRe = (attack / 2);
     return attack;
 }
 

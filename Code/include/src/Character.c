@@ -16,7 +16,7 @@ C_Character *ptr_enemy2 = &enemy[2];
 
 char cle;
 extern M_Launguage l;
-extern int *VTRe;
+extern int *ptr_VTRe;
 
 int C_randomNum(int max)
 {
@@ -121,6 +121,11 @@ void C_getEquipmentDscp_EN(C_EquipmentType eq)
             printf("VampireTooth.\nGet certain points of health, which equals to half of the damage you cause.\n");
             break;
         }
+        case HeartProtection:
+        {
+            printf("HeartProtection.\nProtect hero from fatal hurt once. Broken after take effect.\n");
+            break;
+        }
         default:
             break;
     }
@@ -141,7 +146,12 @@ void C_getEquipmentDscp_CN(C_EquipmentType eq)
         }
         case VampireTooth:
         {
-            printf("吸血鬼之牙。\n回复你对敌人造成的伤害的一半的生命值\n");
+            printf("吸血鬼之牙。\n回复你对敌人造成的伤害的一半的生命值。\n");
+            break;
+        }
+        case HeartProtection:
+        {
+            printf("护心镜。\n抵挡一次致命伤害。生效后被破坏。\n");
             break;
         }
         default:
@@ -193,11 +203,6 @@ void C_EquipmentCD(C_Character *h, C_Character *e)
                     C_Hurted(e);
                     break;
                 }
-                case VampireTooth:
-                {
-                    H_addHP(*VTRe);
-                    break;
-                }
                 default:
                     break;
             }
@@ -212,6 +217,20 @@ void C_EquipmentAB(C_Character *h, C_Character *e)
         {
             case EM:
             {
+                break;
+            }
+            case VampireTooth:
+            {
+                H_addHP(*ptr_VTRe);
+                break;
+            }
+            case HeartProtection:
+            {
+                if(((h->HP) - (h->hurt)) <= 0)
+                {
+                    h->hurt = 0;
+                    h->equipment[i] = EM;
+                }
                 break;
             }
             default:
