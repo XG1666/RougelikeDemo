@@ -650,13 +650,14 @@ void M_showEquipmentMenu_EN(int eq, C_Character *h)
     printf("*********\n");
     printf("Equipment\n");
     printf("*****************************\n");
-    printf("Pick up the equipment or just leave (type \'4\') :\n");
+    printf("Pick up the equipment or just leave (type \'4\') :\n\n");
     C_getEquipmentDscp(eq);
+    printf("\n");
     printf("*****************************\n");
     M_showEquipmentInfo_EN(h);
     printf("*****************************\n");
 
-    scanf("%c", &key);
+    scanf(" %c", &key);
     switch(key)
     {
         case '1':
@@ -680,13 +681,14 @@ void M_showEquipmentMenu_CN(int eq, C_Character *h)
     printf("*********\n");
     printf("  装备库\n");
     printf("*****************************\n");
-    printf("拾起此装备, 或者直接离开 (输入\'4\') :\n");
+    printf("拾起此装备, 或者直接离开 (输入\'4\') :\n\n");
     C_getEquipmentDscp(eq);
+    printf("\n");
     printf("*****************************\n");
     M_showEquipmentInfo_CN(h);
     printf("*****************************\n");
 
-    scanf("%c", &key);
+    scanf(" %c", &key);
     switch(key)
     {
         case '1':
