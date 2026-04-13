@@ -15,6 +15,7 @@ C_Character *ptr_enemy1 = &enemy[1];
 C_Character *ptr_enemy2 = &enemy[2];
 
 char cle;
+int glacier = 0;
 extern M_Launguage l;
 extern int *ptr_VTRe;
 
@@ -126,6 +127,11 @@ void C_getEquipmentDscp_EN(C_EquipmentType eq)
             printf("HeartProtection.\nProtect hero from fatal hurt once. Broken after take effect.\n");
             break;
         }
+        case Glacier:
+        {
+            printf("Glacier.\nWhen you come into a battle, the enemy cannot act for 3 turns\n");
+            break;
+        }
         default:
             break;
     }
@@ -152,6 +158,11 @@ void C_getEquipmentDscp_CN(C_EquipmentType eq)
         case HeartProtection:
         {
             printf("护心镜。\n抵挡一次致命伤害。生效后被破坏。\n");
+            break;
+        }
+        case Glacier:
+        {
+            printf("千年冰川\n当你进入战斗时, 敌人在最初3个回合无法行动\n");
             break;
         }
         default:
@@ -230,6 +241,15 @@ void C_EquipmentAB(C_Character *h, C_Character *e)
                 {
                     h->hurt = 0;
                     h->equipment[i] = EM;
+                }
+                break;
+            }
+            case Glacier:
+            {
+                if(glacier < 3)
+                {
+                    h->hurt = 0;
+                    glacier ++;
                 }
                 break;
             }

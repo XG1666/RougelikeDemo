@@ -51,6 +51,7 @@ void H_setHero_CN(void)
     {
         hero.equipment[i] = EM;
     }
+    hero.equipment[0] = Glacier;
 
     hero_p.x = 0;
     hero_p.y = 0;

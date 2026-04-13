@@ -13,8 +13,9 @@ typedef enum
     EM = 0,
     FlyingCannon,
     VampireTooth,
-    HeartProtection
-    //共个
+    HeartProtection,
+    Glacier
+    //共4个
 } C_EquipmentType;//C_getEquipmentDscp, C_Equipment**,  M_showEquipmentMenu(in main)
 
 typedef struct 

@@ -6,6 +6,8 @@
 #include"../Menu.h"
 
 #define mazeEdge 5
+
+extern int glacier;
 extern char key;
 extern char cle;
 extern M_Launguage l;
@@ -976,6 +978,7 @@ void M_showBattleMenu_CN(C_Character *h, C_Character *e)
 }
 void M_showBattleMenu(C_Character *h, C_Character *e)
 {
+    glacier = 0;
     if(l == EN)
     {
         M_showBattleMenu_EN(h, e);
