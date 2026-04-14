@@ -139,10 +139,12 @@ int main(void)
                     //Select room type with random number 随机房间类型
                     //
                     //In the room 房间事件发生
-                    switch (C_randomNum(4))
+                    switch (C_randomNum(6))
                     {
                     case 1:
                     case 3:
+                    case 5:
+                    case 6:
                         {
                             C_Character *e = C_getEnemyInfo();
                             M_showBattleMenu(H_getHeroInfo(), e);

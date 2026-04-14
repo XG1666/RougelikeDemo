@@ -14,8 +14,9 @@ typedef enum
     FlyingCannon,
     VampireTooth,
     HeartProtection,
-    Glacier
-    //共4个
+    Glacier,
+    EnergyStorage
+    //共5个
 } C_EquipmentType;//C_getEquipmentDscp, C_Equipment**,  M_showEquipmentMenu(in main)
 
 typedef struct 

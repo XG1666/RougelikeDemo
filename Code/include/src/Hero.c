@@ -10,6 +10,8 @@ extern char key;
 extern M_Launguage l;
 int VTRe;
 int *ptr_VTRe = & VTRe;
+int energystorage = 0;
+int *ptr_energystorage = & energystorage;
 
 C_Character hero;
 C_Character *ptr_hero = &hero;
@@ -51,7 +53,7 @@ void H_setHero_CN(void)
     {
         hero.equipment[i] = EM;
     }
-    hero.equipment[0] = Glacier;
+    hero.equipment[0] = EnergyStorage;
 
     hero_p.x = 0;
     hero_p.y = 0;
@@ -191,7 +193,9 @@ int H_Attack(C_Character *e)
 {
     int attack;
     attack = C_Attack(ptr_hero, e);
+
     *ptr_VTRe = (attack / 2);
+    *ptr_energystorage = attack;
     return attack;
 }
 

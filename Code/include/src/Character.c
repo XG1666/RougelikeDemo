@@ -16,6 +16,8 @@ C_Character *ptr_enemy2 = &enemy[2];
 
 char cle;
 int glacier = 0;
+int energystoragecnt = 0;
+extern int *ptr_energystorage;
 extern M_Launguage l;
 extern int *ptr_VTRe;
 
@@ -73,12 +75,13 @@ C_Character *C_getBossInfo(void)
 
 C_Character *C_getEnemyInfo(void)
 {
-    int n = C_randomNum(5);
+    int n = C_randomNum(6);
     C_Character *p;
     switch(n)
     {
         case 1:
         case 4:
+        case 6:
         {
             p = ptr_enemy0;
             break;
@@ -129,7 +132,12 @@ void C_getEquipmentDscp_EN(C_EquipmentType eq)
         }
         case Glacier:
         {
-            printf("Glacier.\nWhen you come into a battle, the enemy cannot act for 3 turns\n");
+            printf("Glacier.\nWhen you come into a battle, the enemy cannot act for 2 turns.\n");
+            break;
+        }
+        case EnergyStorage:
+        {
+            printf("EgergyStorage.\nThe owner could deal double damage every three times.\n");
             break;
         }
         default:
@@ -162,7 +170,12 @@ void C_getEquipmentDscp_CN(C_EquipmentType eq)
         }
         case Glacier:
         {
-            printf("千年冰川\n当你进入战斗时, 敌人在最初3个回合无法行动\n");
+            printf("千年冰川\n当你进入战斗时, 敌人在最初2个回合无法行动\n");
+            break;
+        }
+        case EnergyStorage:
+        {
+            printf("储能器。\n持有者每攻击三次, 第三次攻击时可造成双倍伤害\n");
             break;
         }
         default:
@@ -214,6 +227,28 @@ void C_EquipmentCD(C_Character *h, C_Character *e)
                     C_Hurted(e);
                     break;
                 }
+                case EnergyStorage:
+                {
+                    if(energystoragecnt == 3)
+                    {
+                        if(l == EN)
+                        {
+                            printf("Energy has been released!\n");
+                        }
+                        else if (l == CN)
+                        {
+                            printf("能量已释放！\n");
+                        }
+                        e->hurt = *ptr_energystorage;
+                        C_Hurted(e);
+                        energystoragecnt = 0;
+                        
+                    }
+                    else
+                    {
+                        energystoragecnt ++;
+                    }
+                }
                 default:
                     break;
             }
@@ -246,7 +281,7 @@ void C_EquipmentAB(C_Character *h, C_Character *e)
             }
             case Glacier:
             {
-                if(glacier < 3)
+                if(glacier < 2)
                 {
                     h->hurt = 0;
                     glacier ++;
